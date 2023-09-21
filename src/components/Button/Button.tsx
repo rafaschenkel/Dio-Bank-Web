@@ -4,9 +4,10 @@ import { MouseEventHandler } from 'react';
 interface IButton {
   onClick: MouseEventHandler;
   text: string;
+  loading: boolean;
 }
 
-export const ButtonContainer = ({ onClick, text }: IButton) => {
+export const ButtonContainer = ({ onClick, text, loading }: IButton) => {
   return (
     <Button
       onClick={onClick}
@@ -16,6 +17,7 @@ export const ButtonContainer = ({ onClick, text }: IButton) => {
       textColor="whiteAlpha.900"
       _hover={{ bgColor: 'blue.900' }}
       fontSize="18px"
+      isLoading={loading}
     >
       {text}
     </Button>
