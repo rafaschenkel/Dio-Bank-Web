@@ -1,10 +1,34 @@
 import { ButtonContainer } from '../Button/Button';
 import { login } from '../../services/login/login';
-import { Input } from '@chakra-ui/react';
+import { Heading, Input } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+//import { api } from '../../api';
+
+// interface IUserData {
+//   email: string;
+//   password: string;
+//   name: string;
+// }
 
 export const FormLogin = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState('');
+  //const [userData, setUserData] = useState<IUserData | null>();
+
+  // useEffect(() => {
+  //   async function getData() {
+  //     const data: IUserData | any = await api;
+  //     setUserData(data);
+  //   }
+
+  //   getData();
+  // }, []);
+
   return (
     <>
+      <Heading as="h2" marginBottom="20px">
+        Faça o login
+      </Heading>
       <Input
         _focus={{ borderColor: 'blue.900' }}
         _hover={{ borderColor: 'pink.900' }}
@@ -12,8 +36,9 @@ export const FormLogin = () => {
         type="email"
         fontWeight="bold"
         fontStyle="italic"
-        maxW="md"
-        id="inputEmail"
+        maxW="lg"
+        defaultValue={email}
+        onBlur={e => setEmail(e.target.value)}
       />
       <Input
         _focus={{ borderColor: 'blue.900' }}
@@ -22,9 +47,11 @@ export const FormLogin = () => {
         type="password"
         fontWeight="bold"
         fontStyle="italic"
-        maxW="md"
+        maxW="lg"
+        defaultValue={password}
+        onBlur={e => setPassword(e.target.value)}
       />
-      <ButtonContainer text="Entrar" handleLogin={login} />
+      <ButtonContainer text="Entrar" onClick={() => login(email, password)} />
     </>
   );
 };
