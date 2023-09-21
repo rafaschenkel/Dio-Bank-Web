@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, ChakraProvider, Flex, Heading } from '@chakra-ui/react';
+import { Header } from './components/Header/Header';
+import { FormLogin } from './components/FormLogin/FormLogin';
 
-function App() {
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ChakraProvider>
+      <Header />
+      <Box
+        minHeight="100vh"
+        p="20px"
+        bgGradient="linear(135deg,pink.900 0%, black 30%, black 70%, blue.900 100%)"
+        justifyContent="center"
+        display="flex"
+        alignItems="center"
+      >
+        <Flex
+          alignItems="center"
+          direction="column"
+          gap="5"
+          maxW="lg"
+          minW="lg"
+          maxH="md"
+          marginX="auto"
+          borderRadius="xl"
+          border="1px"
+          px="30px"
+          py="30px"
+          bgColor="whiteAlpha.100"
+          textColor="white"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Heading as="h2" marginBottom="20px">
+            Login
+          </Heading>
+          <FormLogin />
+        </Flex>
+      </Box>
+    </ChakraProvider>
   );
 }
-
-export default App;
