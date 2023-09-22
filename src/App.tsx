@@ -1,36 +1,16 @@
-import { Box, ChakraProvider, Flex } from '@chakra-ui/react';
-import { FormLogin } from './components/FormLogin/FormLogin';
+import { ChakraProvider } from '@chakra-ui/react';
 import { Layout } from './components/Layout/Layout';
+import { BrowserRouter } from 'react-router-dom';
+import { RoutesApp } from './routes';
 
-export function App() {
+export const App = () => {
   return (
-    <ChakraProvider>
-      <Layout>
-        <Box
-          minHeight="100vh"
-          p="20px"
-          bgGradient="linear(135deg,pink.900 0%, black 30%, black 70%, blue.900 100%)"
-          justifyContent="center"
-          display="flex"
-          alignItems="center"
-        >
-          <Flex
-            alignItems="center"
-            direction="column"
-            gap="5"
-            maxW="lg"
-            minW="sm"
-            marginX="auto"
-            borderRadius="xl"
-            border="1px"
-            p="30px"
-            bgColor="whiteAlpha.100"
-            textColor="white"
-          >
-            <FormLogin />
-          </Flex>
-        </Box>
-      </Layout>
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider>
+        <Layout>
+          <RoutesApp />
+        </Layout>
+      </ChakraProvider>
+    </BrowserRouter>
   );
-}
+};
